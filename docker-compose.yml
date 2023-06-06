@@ -1,0 +1,20 @@
+version: '3'
+services:
+  ares:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8081:8080
+    command: ./ares.py runserver -h 0.0.0.0 -p 8080 --threaded
+    volumes:
+      - ./Ares:/app
+  #   depends_on:
+  #     - db
+
+  # db:
+  #   image: postgres:latest
+  #   environment:
+  #     - POSTGRES_USER=ares
+  #     - POSTGRES_PASSWORD=ares
+  #     - POSTGRES_DB=aresdb
